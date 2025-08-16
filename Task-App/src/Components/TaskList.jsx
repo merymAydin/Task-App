@@ -1,4 +1,5 @@
 import React from 'react'
+import TaskCard from './TaskCard'
 
 
 function TaskList({tasks}) {
@@ -6,9 +7,7 @@ function TaskList({tasks}) {
     <div className='task-list'>
       {
         tasks.map((task) => (
-          <div key={task.id}>
-            {task.title}
-          </div>
+          <TaskCard key={task.id} task={task}/>
         ))
       }
     </div>
