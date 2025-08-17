@@ -1,15 +1,13 @@
-import React from 'react'
+  import React from 'react'
 import TaskCard from './TaskCard'
 
 
-function TaskList({tasks}) {
+function TaskList({tasks,deleteTask, updateTask}) {
   return (
-    <div className='task-list'>
-      {
-        tasks.map((task) => (
-          <TaskCard key={task.id} task={task}/>
-        ))
-      }
+    <div id='task-list'>
+        {
+            tasks.map((task) => (<TaskCard key={task.id} task={task} deleteTask={deleteTask} updateTask={updateTask} />))
+        }
     </div>
   )
 }

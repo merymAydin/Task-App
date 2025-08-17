@@ -1,9 +1,10 @@
 import React, { useState } from 'react'
 
-function TaskForm({create}) {
-    const[title, setTitle] = useState("");
-    const[description, setDescription] = useState("");
-    const[important, setImportant] = useState(false);
+function TaskForm({create,task,updateSubmit}) {
+    const[title, setTitle] = useState(task ? task.title : "");
+    const[description, setDescription] = useState(task ? task.description : "");
+    const[important, setImportant] = useState(task ? task.important : false);
+
     const handleTitleChange = (e) => {
         setTitle(e.target.value);
         //console.log(title);
@@ -18,28 +19,32 @@ function TaskForm({create}) {
     };
     const handleSubmit = (e) => {
        e.preventDefault();
-       create(title, description, important);
+       if (task) {
+         updateSubmit(task.id, title, description, important);
+       }else{
+        create(title, description, important);
+       }
        setTitle("");
        setDescription("");
        setImportant(false);
     };
   return (
     <form id='task-form' onSubmit={handleSubmit}>
-        <h2 className='form-title'>Create Task</h2>
+        <h2 className='form-title'>{task ? "Update Task" : "Create Task"}</h2>
         <div className="form-group">
             <label className='form-label' htmlFor="title">Title</label>
-            <input className='form-control' value={title} type="text" id="title" onChange={handleTitleChange} />
+            <input className='form-control' value={title} type="text" id='title' onChange={handleTitleChange}/>
         </div>
         <div className="form-group">
             <label className='form-label' htmlFor="description">Description</label>
-            <textarea className='form-control' value={description} name="description" id="description" rows={5} onChange={handleDescriptionChange}></textarea>
+            <textarea name="description" id="description" rows={5} className='form-control' value={description} onChange={handleDescriptionChange}></textarea>
         </div>
         <div className="form-group">
-            <label className='form-label' htmlFor="important">Important
-            <input className='form-check' type="checkbox" name='important' id="important" checked={important} onChange={handleImportantChecked} />
+            <label className='form-label' htmlFor="important">Important 
+                <input type="checkbox" checked={important} className='form-check' name="important" id="important" onChange={handleImportantChecked} />
             </label>
         </div>
-        <button id='form-button' className='create-button'>Create</button>
+        <button id='form-button' className={task ? "update-button" : 'create-button'} >{task ? "Update" : "Create"}</button>
     </form>
   )
 }

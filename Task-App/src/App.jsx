@@ -19,13 +19,29 @@ function App() {
     }]);
     console.log(tasks);
   }
+
+  function deleteTask(id) {
+    const deletedAfterTasks = tasks.filter((task) => task.id !== id);
+    setTasks(deletedAfterTasks);
+  }
+
+  const updateTask = (id, title, description, important) => {
+    const updatedTasks = tasks.map((task) => {
+      if (task.id === id) {
+        return { id, title , description, important };
+      }
+      return task;
+    });
+    setTasks(updatedTasks);
+  };
+
   return (
     <>
     <div id="app">
       <div id="task-form-container">
-        <TaskForm create={createTask} />
+        <TaskForm create={createTask}/>
       </div>
-      <TaskList tasks={tasks} />
+      <TaskList tasks={tasks} deleteTask={deleteTask} updateTask={updateTask}/>
     </div>
     </>
   )

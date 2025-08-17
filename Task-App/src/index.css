@@ -1,13 +1,17 @@
 *{
-    box-sizing: border-box;
+  box-sizing: border-box;
 }
 html{
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
-input,textarea{
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
+input, textarea{
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
-.container {
-    width: 80%;
-    margin: 0 auto;
+.container{
+  width: 80%;
+  margin: 0 auto;
 }
+body {
+  background-color: white;
+}
+
