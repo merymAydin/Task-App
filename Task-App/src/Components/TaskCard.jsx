@@ -30,7 +30,7 @@ function TaskCard({task,deleteTask,updateTask}) {
             </div>
             <div className="card-group">
                 <h3 className='card-title'>Important</h3>
-                <p className='card-text'>{task.important ? "Important" : "Normal"}</p>
+                <p className='card-text'>{task.important ? "Important" : "Not Important"}</p>
             </div>
             <div className="card-group">
                 <button className='update-button' onClick={handleUpdateClick}>Update</button>
